@@ -1,0 +1,14 @@
+#% RAML 1.0 Booking
+{
+    "type": "object",
+    "properties": {
+        "code": {
+            "type": "number",
+            "maximum": 100
+        },
+        "message": {
+            "type": "string",
+            "pattern": "\\D+"
+        }
+    }
+}

@@ -26,6 +26,10 @@
 	</properties>
 
 	<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -34,17 +38,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.h2database</groupId>-->
+			<!--<artifactId>h2</artifactId>-->
+			<!--<scope>runtime</scope>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -75,6 +82,31 @@
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>com.phoenixnap.oss</groupId>
+            <artifactId>springmvc-raml-plugin</artifactId>
+            <version>0.10.13</version>
+        </dependency>
+        <dependency>
+            <groupId>com.phoenixnap.oss</groupId>
+            <artifactId>springmvc-raml-parser</artifactId>
+            <version>0.10.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>0.7.4</version>
+        </dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -95,7 +127,45 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>com.phoenixnap.oss</groupId>
+                <artifactId>springmvc-raml-plugin</artifactId>
+                <version>0.10.13</version>
+                <configuration>
+                    <ramlPath>src/main/resources/static/api.raml</ramlPath>
+                    <outputRelativePath>target/generated-sources</outputRelativePath>
+                    <addTimestampFolder>false</addTimestampFolder>
+                    <basePackage>com.yuranos.documented.api</basePackage>
+                    <generateUnreferencedSchemas>true</generateUnreferencedSchemas>
+                    <seperateMethodsByContentType>false</seperateMethodsByContentType>
+                    <rule>com.phoenixnap.oss.ramlapisync.generation.rules.Spring4ControllerInterfaceRule</rule>
+                    <ruleConfiguration>
+                        <simpleReturnTypes>true</simpleReturnTypes>
+                        <useShortcutMethodMappings>true</useShortcutMethodMappings>
+                    </ruleConfiguration>
+                    <generationConfig>
+                        <includeJsr303Annotations>true</includeJsr303Annotations>
+                    </generationConfig>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-springmvc-endpoints</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-springmvc-endpoints</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 	<repositories>

@@ -1,0 +1,36 @@
+#% RAML 1.0 Booking
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "maximum": 100
+        },
+        "location": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 25
+        },
+        "departureDate": {
+            "type": "datetime"
+        },
+        "arrivalDate": {
+             "type": "datetime"
+        },
+        "passengerName": {
+            "minLength": 3,
+            "maxLength": 25
+        },
+        "passengerSurname": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 25
+        },
+        "age": {
+            "type": "number",
+            "minimum": 12,
+            "maximum": 100
+
+        }
+    }
+}

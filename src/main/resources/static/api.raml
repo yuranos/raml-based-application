@@ -1,0 +1,75 @@
+#%RAML 1.0
+title: Booking API
+version: v1.0
+baseUri: /
+
+types:
+  Booking: !include schema/booking.raml
+  Error: !include schema/error.raml
+
+/bookings:
+  /{bookingId}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Booking
+              example: !include examples/booking.json
+        500:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+    put:
+      body:
+        application/json:
+          type: Booking
+          example: !include examples/booking.json
+      responses:
+        204:
+        500:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+    delete:
+      responses:
+        204:
+        500:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/error.json
+  post:
+    body:
+      application/json:
+        type: Booking
+        example: !include examples/booking.json
+    responses:
+      201:
+      500:
+        body:
+          application/json:
+            type: Error
+            example: !include examples/error.json
+      404:
+        body:
+          application/json:
+            type: Error
+            example: !include examples/error.json
