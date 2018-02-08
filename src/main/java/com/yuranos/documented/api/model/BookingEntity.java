@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id", "location"})
+@EqualsAndHashCode(of = {"id", "destination"})
 @Table(name = "bookings")
 @Entity
 public class BookingEntity {
@@ -30,7 +30,7 @@ public class BookingEntity {
     private Integer id;
     @NotNull
     @Size(min = 3, max = 25)
-    private String location;
+    private String destination;
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
     private DateTime departureDate;

@@ -15,7 +15,7 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Integer>
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query("update Booking b set b.passengerName = :#{#booking.passengerName}," +
+    @Query("update BookingEntity b set b.passengerName = :#{#booking.passengerName}," +
             "b.destination = :#{#booking.destination}, b.departureDate = :#{#booking.departureDate} where b.id = :id")
     int update(@Param("id") Integer id, @Param("booking") BookingEntity booking);
 }

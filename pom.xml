@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.yuranos.raml</groupId>
-	<artifactId>raml-based-application</artifactId>
+	<artifactId>raml-based-producer-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>raml-based-application</name>
-	<description>Demo project for Spring Boot</description>
+	<name>raml-based-producer-application</name>
+	<description>Demo project for Spring Boot based CDC(Producer)</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -111,6 +111,16 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!--TODO: Interesting point for a presentation-->
+			<!-- If you're adding this dependency explicitly you have to
+				add it *BEFORE* the Release Train BOM-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-dependencies</artifactId>
+				<version>2.0.0.M5</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -165,6 +175,17 @@
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
                 </configuration>
             </plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.springframework.cloud</groupId>-->
+				<!--<artifactId>spring-cloud-contract-maven-plugin</artifactId>-->
+				<!--<version>2.0.0.M5</version>-->
+				<!--&lt;!&ndash; Don't forget about this value !! &ndash;&gt;-->
+				<!--<extensions>true</extensions>-->
+				<!--<configuration>-->
+					<!--&lt;!&ndash; Provide the base class for your auto-generated tests &ndash;&gt;-->
+					<!--<baseClassForTests>com.example.MvcTest</baseClassForTests>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
         </plugins>
 	</build>
 
@@ -178,9 +199,17 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>spring-milestones</id>
+			<id>spring-milestones-libs</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -197,9 +226,17 @@
 			</snapshots>
 		</pluginRepository>
 		<pluginRepository>
-			<id>spring-milestones</id>
+			<id>spring-milestones-libs</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>

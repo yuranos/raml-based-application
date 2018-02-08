@@ -4,21 +4,21 @@ import com.yuranos.documented.api.BookingController;
 import com.yuranos.documented.api.model.Booking;
 import com.yuranos.documented.api.model.BookingEntity;
 import com.yuranos.documented.api.services.BookingService;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@AllArgsConstructor
 public class BookingControllerImpl implements BookingController {
 
     private final BookingService bookingService;
 
     private final ModelMapper modelMapper;
-
-    private BookingControllerImpl(BookingService bookingService, ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-        this.bookingService = bookingService;
-    }
 
     @Override
     public Object createBooking(Booking booking) {

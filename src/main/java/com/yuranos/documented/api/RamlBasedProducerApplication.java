@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RamlBasedApplication {
+public class RamlBasedProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RamlBasedApplication.class, args);
+		SpringApplication.run(RamlBasedProducerApplication.class, args);
 	}
 }

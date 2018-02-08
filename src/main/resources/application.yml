@@ -3,14 +3,14 @@ spring:
         ansi:
             enabled: always
     jpa:
-        hibernate.ddl-auto: create
+        hibernate.ddl-auto: update
         properties:
             hibernate:
                 namingStrategy: org.hibernate.cfg.DefaultNamingStrategy
                 dialect: org.hibernate.dialect.MySQL5Dialect
         show-sql: true
     datasource:
-        url: jdbc:mysql://localhost:3306/bookings
+        url: jdbc:mysql://localhost:3306/bookings_producer
         username: root
         password: rootroot
 #    jackson:
