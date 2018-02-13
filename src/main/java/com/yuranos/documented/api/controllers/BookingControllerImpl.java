@@ -6,8 +6,11 @@ import com.yuranos.documented.api.model.BookingEntity;
 import com.yuranos.documented.api.services.BookingService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,15 +24,15 @@ public class BookingControllerImpl implements BookingController {
     private final ModelMapper modelMapper;
 
     @Override
-    public Object createBooking(Booking booking) {
-        bookingService.createBooking(convertToEntity(booking));
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    @ResponseStatus(code = HttpStatus.OK)
+    public Booking getBookingById(@PathVariable String bookingId) {
+        return convertToDto(bookingService.getBooking(bookingId));
     }
 
     @Override
-    @ResponseStatus(code = HttpStatus.OK)
-    public Booking getBookingById(String bookingId) {
-        return convertToDto(bookingService.getBooking(bookingId));
+    public Object createBooking(@RequestBody Booking booking) {
+        bookingService.createBooking(convertToEntity(booking));
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Override
@@ -45,7 +48,10 @@ public class BookingControllerImpl implements BookingController {
     }
 
     private BookingEntity convertToEntity(Booking bookingDto) {
-        return modelMapper.map(bookingDto, BookingEntity.class);
+        BookingEntity bookingEntity = modelMapper.map(bookingDto, BookingEntity.class);
+        //validate input
+        modelMapper.validate();
+        return bookingEntity;
     }
 
     private Booking convertToDto(BookingEntity bookingEntity) {

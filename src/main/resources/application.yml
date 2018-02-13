@@ -10,7 +10,7 @@ spring:
                 dialect: org.hibernate.dialect.MySQL5Dialect
         show-sql: true
     datasource:
-        url: jdbc:mysql://localhost:3306/bookings_producer
+        url: jdbc:mysql://localhost:3306/bookings_producer?useSSL=false
         username: root
         password: rootroot
 #    jackson:
