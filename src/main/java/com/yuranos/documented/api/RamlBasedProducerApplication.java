@@ -26,7 +26,7 @@ public class RamlBasedProducerApplication {
         val toLocalDateTime = new AbstractConverter<Date, LocalDateTime>() {
             protected LocalDateTime convert(Date date) {
                 return Optional.ofNullable(date)
-                        .map(dt -> LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault())).orElse(null);
+                        .map(dt -> LocalDateTime.ofInstant(dt.toInstant(), ZoneId.systemDefault())).orElse(null);
             }
         };
         Converter<LocalDateTime, Date> toDate = new AbstractConverter<LocalDateTime, Date>() {
