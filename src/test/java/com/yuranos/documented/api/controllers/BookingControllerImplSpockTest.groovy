@@ -1,15 +1,19 @@
 package com.yuranos.documented.api.controllers
 
-//class BookingControllerImplSpockTest extends spock.lang.Specification {
-//    def "GetBookingById"() {
-//    }
-//
-//    def "CreateBooking"() {
-//    }
-//
-//    def "UpdateBookingById"() {
-//    }
-//
-//    def "DeleteBookingById"() {
-//    }
-//}
+import spock.lang.Specification
+
+//@SpringBootTest
+//@Import(TestConfigurationForSpock)
+class BookingControllerImplSpockTest extends Specification {
+    def "GetBookingById"() {
+    }
+
+    def "CreateBooking"() {
+    }
+
+    def "UpdateBookingById"() {
+    }
+
+    def "DeleteBookingById"() {
+    }
+}

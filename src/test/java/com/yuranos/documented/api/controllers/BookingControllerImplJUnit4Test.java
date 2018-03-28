@@ -3,9 +3,11 @@ package com.yuranos.documented.api.controllers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.*;
 
+//@SpringBootTest
 public class BookingControllerImplJUnit4Test {
     @Before
     public void setUp() throws Exception {

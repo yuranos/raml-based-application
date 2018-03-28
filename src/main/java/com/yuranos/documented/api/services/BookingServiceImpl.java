@@ -15,7 +15,7 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final UnaryOperator<BookingEntity> bookingEntityUndecorator;
-    private final BookingEntityDecoratorImplNoDynamicProxy bookingEntityDecoratorImpl = new BookingEntityDecoratorImplNoDynamicProxy();
+    private final BookingEntityDecoratorImpl bookingEntityDecoratorImpl;
 
     @Override
     public BookingEntity getBooking(String bookingId) {
