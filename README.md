@@ -5,6 +5,6 @@
 - Will showcase HTTP transport. For Spring Cloud Stream based example see: https://github.com/yuranos/spring-cloud-stream-based-consumer, https://github.com/yuranos/spring-cloud-stream-based-producer
 
 
-#Whitebox testing of Sring Boot application with JUnit 5 and Spock
+## Whitebox testing of Sring Boot application with JUnit 5 and Spock
 This repo also contains some examples on how to configure JUnit5 and Spock for Spring Boot. It's a code that was used to create a presentation ["Whitebox testing of Sring Boot application"](https://www.slideshare.net/IuriiNosenko/whitebox-testing-of-spring-boot-applications-89271319)
 You can find it in a separate branch - `unit_tests`.
