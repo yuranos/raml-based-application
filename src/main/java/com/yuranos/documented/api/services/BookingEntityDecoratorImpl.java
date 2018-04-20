@@ -14,7 +14,7 @@ import java.util.function.UnaryOperator;
 @Getter
 @Setter
 @Service
-public class BookingEntityDecoratorImplNoDynamicProxy {
+public class BookingEntityDecoratorImpl {
     final UnaryOperator<BookingEntity> bookEntityDecorator = (bookingEntity) -> {
         bookingEntity.setDestination(Optional.of(bookingEntity.getDestination()).orElse("") + " (Provided by Thomas Cook)");
         return bookingEntity;

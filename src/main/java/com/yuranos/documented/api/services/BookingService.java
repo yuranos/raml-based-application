@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public interface BookingService {
 
     BookingEntity getBooking(String bookingId);
-    void createBooking(BookingEntity booking);
+    BookingEntity createBooking(BookingEntity booking);
     void deleteBooking(String bookingId);
     void updateBooking(String bookingId, BookingEntity booking);
 }

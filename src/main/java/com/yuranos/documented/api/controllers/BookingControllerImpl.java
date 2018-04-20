@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @AllArgsConstructor
@@ -31,14 +34,14 @@ public class BookingControllerImpl implements BookingController {
 
     @Override
     public Object createBooking(@RequestBody Booking booking) {
-        bookingService.createBooking(convertToEntity(booking));
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        Booking createdBooking = convertToDto(bookingService.createBooking(convertToEntity(booking)));
+        return ResponseEntity.status(HttpStatus.CREATED).location(addLocation(booking));
     }
 
     @Override
-    public Object updateBookingById(String bookingId, Booking booking) {
+    public Object updateBookingById(@PathVariable String bookingId, @RequestBody Booking booking) {
         bookingService.updateBooking(bookingId, convertToEntity(booking));
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).location(addLocation(booking)).build();
     }
 
     @Override
@@ -56,5 +59,11 @@ public class BookingControllerImpl implements BookingController {
 
     private Booking convertToDto(BookingEntity bookingEntity) {
         return modelMapper.map(bookingEntity, Booking.class);
+    }
+
+    private URI addLocation(Booking booking) {
+        return ServletUriComponentsBuilder
+                .fromCurrentRequest().path("/{id}")
+                .buildAndExpand(booking.getId()).toUri();
     }
 }

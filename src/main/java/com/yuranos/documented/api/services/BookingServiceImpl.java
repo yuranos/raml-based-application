@@ -15,7 +15,7 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final UnaryOperator<BookingEntity> bookingEntityUndecorator;
-    private final BookingEntityDecoratorImplNoDynamicProxy bookingEntityDecoratorImpl = new BookingEntityDecoratorImplNoDynamicProxy();
+    private final BookingEntityDecoratorImpl bookingEntityDecoratorImpl = new BookingEntityDecoratorImpl();
 
     @Override
     public BookingEntity getBooking(String bookingId) {
@@ -24,9 +24,9 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void createBooking(BookingEntity booking) {
+    public BookingEntity createBooking(BookingEntity booking) {
         log.info("Creating Booking ", booking);
-        bookingRepository.save(bookingEntityDecoratorImpl.bookEntityDecorator.apply(booking));
+        return bookingRepository.save(bookingEntityDecoratorImpl.bookEntityDecorator.apply(booking));
     }
 
     @Override
