@@ -30,21 +30,9 @@ public class BookingControllerImplTest {
     @MockBean
     private BookingService bookingService;
 
-//        @Before
-//    public void setup() {
-//        RestAssuredMockMvc.standaloneSetup(new BookingControllerImpl());
-//    }
-
     @Before
     public void setup() {
         RestAssuredMockMvc.mockMvc(mockMvc);
-
-//        MockMvcRequestSpecification request = given()
-//                .header("Content-Type", "application/json")
-//                .body("{\"id\":4,\"destination\":\"USA\",\"departureDate\":\"2018-05-28T13:00:56Z\",\"arrivalDate\":\"2018-02-28T12:42:17Z\",\"passengerName\":\"Yura\",\"passengerSurname\":\"CDC\",\"age\":30}");
-//        ResponseOptions response = given().spec(request)
-//                .put("/bookings/4");
-
     }
 
     @Test

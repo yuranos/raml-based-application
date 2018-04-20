@@ -127,6 +127,7 @@
                 <!-- Don't forget about this value !! -->
                 <extensions>true</extensions>
                 <configuration>
+					<!--<packageWithBaseClasses></packageWithBaseClasses>-->
                     <!--<testMode>EXPLICIT</testMode>-->
                     <!--<testMode>JAXRSCLIENT</testMode>-->
                     <!--<testMode>MOCKMVC</testMode>-->
