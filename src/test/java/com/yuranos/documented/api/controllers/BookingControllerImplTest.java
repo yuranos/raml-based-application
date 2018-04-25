@@ -19,7 +19,7 @@ import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookingController.class)
-public class BookingControllerImplTest {
+abstract public class BookingControllerImplTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,11 +33,6 @@ public class BookingControllerImplTest {
     @Before
     public void setup() {
         RestAssuredMockMvc.mockMvc(mockMvc);
-    }
-
-    @Test
-    public void test() {
-
     }
 
 }
