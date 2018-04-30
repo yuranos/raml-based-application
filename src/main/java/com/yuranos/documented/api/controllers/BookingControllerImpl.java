@@ -7,6 +7,7 @@ import com.yuranos.documented.api.services.BookingService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +36,13 @@ public class BookingControllerImpl implements BookingController {
     @Override
     public Object createBooking(@RequestBody Booking booking) {
         Booking createdBooking = convertToDto(bookingService.createBooking(convertToEntity(booking)));
-        return ResponseEntity.status(HttpStatus.CREATED).location(addLocation(booking));
+        return ResponseEntity.status(HttpStatus.CREATED).location(addLocation(createdBooking.getId().intValue())).build();
     }
 
     @Override
     public Object updateBookingById(@PathVariable String bookingId, @RequestBody Booking booking) {
         bookingService.updateBooking(bookingId, convertToEntity(booking));
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).location(addLocation(booking)).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).location(addLocation(null)).build();
     }
 
     @Override
@@ -61,9 +62,14 @@ public class BookingControllerImpl implements BookingController {
         return modelMapper.map(bookingEntity, Booking.class);
     }
 
-    private URI addLocation(Booking booking) {
-        return ServletUriComponentsBuilder
-                .fromCurrentRequest().path("/{id}")
-                .buildAndExpand(booking.getId()).toUri();
+    private URI addLocation(Integer bookingId) {
+        if (bookingId != null) {
+            return ServletUriComponentsBuilder
+                    .fromCurrentRequest().path("/{id}")
+                    .buildAndExpand(bookingId).toUri();
+        } else {
+            return ServletUriComponentsBuilder
+                    .fromCurrentRequest().build().toUri();
+        }
     }
 }

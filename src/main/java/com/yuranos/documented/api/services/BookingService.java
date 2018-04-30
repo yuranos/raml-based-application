@@ -1,7 +1,6 @@
 package com.yuranos.documented.api.services;
 
 import com.yuranos.documented.api.model.BookingEntity;
-import org.springframework.stereotype.Service;
 
 public interface BookingService {
 
