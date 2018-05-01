@@ -46,7 +46,7 @@ public class BookingControllerImpl implements BookingController {
     }
 
     @Override
-    public Object deleteBookingById(String bookingId) {
+    public Object deleteBookingById(@PathVariable String bookingId) {
         bookingService.deleteBooking(bookingId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

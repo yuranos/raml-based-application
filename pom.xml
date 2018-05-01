@@ -112,13 +112,6 @@
                 <!-- Don't forget about this value !! -->
                 <extensions>true</extensions>
                 <configuration>
-					<!--<contractsMode>REMOTE</contractsMode>-->
-					<!--<packageWithBaseClasses></packageWithBaseClasses>-->
-                    <!--<testMode>EXPLICIT</testMode>-->
-                    <!--<testMode>JAXRSCLIENT</testMode>-->
-                    <!--<testMode>MOCKMVC</testMode>-->
-                    <!--<testFramework>SPOCK</testFramework>-->
-                     <!--Provide the base class for your auto-generated tests-->
                     <baseClassForTests>com.yuranos.documented.api.controllers.BookingControllerImplTest</baseClassForTests>
                 </configuration>
             </plugin>
