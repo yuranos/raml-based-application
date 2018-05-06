@@ -1,0 +1,8 @@
+request:
+    method: DELETE
+    url: /bookings/1
+    headers:
+        Content-Type: application/json
+response:
+    status: 204
+

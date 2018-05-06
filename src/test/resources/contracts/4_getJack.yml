@@ -1,0 +1,11 @@
+request:
+    method: GET
+    url: /bookings/1
+    headers:
+        Content-Type: application/json
+response:
+    status: 404
+    headers:
+        Content-Type: text/plain;charset=UTF-8
+    body:
+        "Such booking doesn’t exist"

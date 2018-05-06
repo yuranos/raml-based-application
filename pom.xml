@@ -48,11 +48,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!--<dependency>-->
-		<!--<groupId>com.h2database</groupId>-->
-		<!--<artifactId>h2</artifactId>-->
-		<!--<scope>runtime</scope>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -85,6 +80,11 @@
 			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+            <scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -112,6 +112,7 @@
                 <!-- Don't forget about this value !! -->
                 <extensions>true</extensions>
                 <configuration>
+                    <httpPort>8085</httpPort>
                     <baseClassForTests>com.yuranos.documented.api.controllers.BookingControllerImplTest</baseClassForTests>
                 </configuration>
             </plugin>

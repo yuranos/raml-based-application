@@ -1,6 +1,12 @@
 request:
-    method: POST
-    url: /bookings/
+    method: GET
+    url: /bookings/1
+    headers:
+        Content-Type: application/json
+response:
+    status: 200
+    headers:
+        Content-Type: application/json;charset=UTF-8
     body:
         destination: "USA"
         departureDate: "2018-05-28T13:00:56Z"
@@ -8,7 +14,4 @@ request:
         passengerName: "Jack"
         passengerSurname: "Daniels"
         age: 30
-    headers:
-        Content-Type: application/json
-response:
-    status: 201
+
