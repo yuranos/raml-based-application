@@ -10,5 +10,15 @@ request:
         age: 30
     headers:
         Content-Type: application/json
+    matchers:
+        body:
+          - path: $.departureDate
+            type: by_timestamp
+          - path: $.arrivalDate
+            type: by_timestamp
+          - path: $.age
+            type: by_regex
+            value: "[2-5][0-9]"
 response:
     status: 201
+

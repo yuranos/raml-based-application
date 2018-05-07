@@ -14,4 +14,16 @@ response:
         passengerName: "Jack"
         passengerSurname: "Daniels"
         age: 30
+    matchers:
+        body:
+          - path: $.departureDate
+            type: by_regex
+            predefined: iso_8601_with_offset
+          - path: $.arrivalDate
+            type: by_regex
+            predefined: iso_8601_with_offset
+          - path: $.age
+            type: by_regex
+            value: "[2-5][0-9]"
+
 
