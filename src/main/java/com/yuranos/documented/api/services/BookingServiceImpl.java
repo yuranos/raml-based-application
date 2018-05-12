@@ -20,13 +20,13 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingEntity getBooking(String bookingId) {
         log.info("Getting Booking with id = {}", bookingId);
-        return bookingEntityUndecorator.apply(bookingRepository.findById(Integer.valueOf(bookingId)).orElse(new BookingEntity()));
+        return bookingEntityUndecorator.apply(bookingRepository.findById(Integer.valueOf(bookingId)).get());
     }
 
     @Override
-    public void createBooking(BookingEntity booking) {
+    public BookingEntity createBooking(BookingEntity booking) {
         log.info("Creating Booking ", booking);
-        bookingRepository.save(bookingEntityDecoratorImpl.bookEntityDecorator.apply(booking));
+        return bookingRepository.save(bookingEntityDecoratorImpl.bookEntityDecorator.apply(booking));
     }
 
     @Override

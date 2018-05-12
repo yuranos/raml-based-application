@@ -45,9 +45,9 @@ public class BookingEntity {
     @Size(min = 3, max = 25)
     private String passengerSurname;
     @NotNull
-    @DecimalMin("12.0")
-    @DecimalMax("100.0")
-    private Double age;
+    @DecimalMin("12")
+    @DecimalMax("100")
+    private Integer age;
 }
 
 
